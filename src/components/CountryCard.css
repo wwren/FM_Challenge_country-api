@@ -2,6 +2,11 @@
   background-color: var(--dark-blue-dark-mode-elements);
   width: 320px;
 }
+
+.country-card-container:hover {
+  cursor: pointer;
+}
+
 .country-card-container img {
   width: 320px;
   height: 200px;

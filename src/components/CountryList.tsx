@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CountryCard from "./CountryCard";
 import { ICountry } from "./CountryCard";
+
 import "./CountryList.css";
 
 function CountryList({ countries }: { countries: ICountry[] }) {

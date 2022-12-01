@@ -1,0 +1,44 @@
+.country-detail-container {
+  color: var(--white);
+  padding: 50px;
+}
+
+.country-detail-container span {
+  font-weight: var(--font-600);
+  margin-right: 10px;
+}
+.country-detail img {
+  width: 500px;
+  height: 400px;
+}
+
+.country-detail {
+  display: flex;
+  padding-top: 50px;
+  gap: 80px;
+}
+
+.country-detail-text-bottom {
+  display: flex;
+  gap: 150px;
+}
+
+.country-detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.country-detail-button {
+  background-color: var(--dark-blue-dark-mode-elements);
+  color: white;
+  padding: 10px 8px;
+  border-radius: 5px;
+  border: none;
+}
+.country-button {
+  margin-left: 5px;
+}
+.back-button {
+  padding: 10px 25px;
+}
