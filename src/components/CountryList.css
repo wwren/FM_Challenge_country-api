@@ -1,0 +1,7 @@
+.country-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px 40px;
+  margin: 40px 0 0;
+  justify-content: flex-start;
+}

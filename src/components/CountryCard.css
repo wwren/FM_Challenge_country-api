@@ -1,0 +1,28 @@
+.country-card-container {
+  background-color: var(--dark-blue-dark-mode-elements);
+  width: 320px;
+}
+.country-card-container img {
+  width: 320px;
+  height: 200px;
+}
+.country-card-text {
+  margin-left: 20px;
+}
+
+.country-card-container .country-card-text p span {
+  font-weight: 600;
+}
+
+.country-card-text h3 {
+  margin-bottom: 30px;
+  color: var(--white);
+}
+.country-card-container .country-card-text p {
+  color: var(--white);
+  margin-block-end: 10px;
+  margin-block-start: 10px;
+}
+.country-card-container .country-card-text p:last-child {
+  margin-bottom: 50px;
+}

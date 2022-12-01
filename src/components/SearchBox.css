@@ -1,0 +1,22 @@
+.search-box-container {
+  width: 500px;
+  background-color: var(--dark-blue-dark-mode-elements);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.fa-solid.fa-magnifying-glass {
+  color: white;
+  margin-left: 20px;
+}
+
+.search-box {
+  margin-left: 20px;
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: var(--dark-blue-dark-mode-elements);
+  color: var(--white);
+}
