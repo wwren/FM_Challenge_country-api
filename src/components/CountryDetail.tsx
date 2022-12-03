@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ICountry } from "./CountryCard";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext, themes } from "../context/theme-context";
 import "./CountryDetail.css";
 var countries = require("i18n-iso-countries");
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
@@ -9,6 +10,8 @@ countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 function CountryDetail() {
   const { name } = useParams();
   const [country, setCountry] = useState<ICountry>();
+  const { theme } = useContext(ThemeContext);
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
@@ -34,10 +37,22 @@ function CountryDetail() {
   console.log(countries.getName("FRA", "en"));
 
   return (
-    <div className="country-detail-container">
+    <div
+      className="country-detail-container"
+      style={{
+        color: theme.font,
+        backgroundColor: theme.background,
+      }}
+    >
       <button
         className="country-detail-button back-button"
         onClick={handleClickToHome}
+        style={{
+          background: theme === themes.dark ? theme.element : theme.background,
+          color: theme.font,
+          boxShadow:
+            theme === themes.dark ? "" : "rgb(0 0 0 / 22%) 0px 0px 3px",
+        }}
       >
         &larr; Back
       </button>
@@ -50,40 +65,96 @@ function CountryDetail() {
               <div className="country-detail-text-bottom">
                 <div className="country-detail-text-bottom__left-panel">
                   <p>
-                    <span>Native Name:</span>
-                    {country.name.common}
+                    <span className="description">Native Name:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.name.common}
+                    </span>
                   </p>
                   <p>
-                    <span>Population:</span>
-                    {country.population.toLocaleString()}
+                    <span className="description">Population:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.population.toLocaleString()}
+                    </span>
                   </p>
                   <p>
-                    <span>Region:</span>
-                    {country.region}
+                    <span className="description">Region:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.region}
+                    </span>
                   </p>
                   <p>
-                    <span>Sub Region:</span>
-                    {country.subregion}
+                    <span className="description">Sub Region:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.subregion}
+                    </span>
                   </p>
                   <p>
-                    <span>Capital:</span>
-                    {country.capital}
+                    <span className="description">Capital:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.capital}
+                    </span>
                   </p>
                 </div>
                 <div className="country-detail-text-bottom__right-panel">
-                  <p>
-                    <span>Top Level Domain:</span>
-                    {country.tld.map((tld) => tld)}
+                  <p className="description">
+                    <span className="description">Top Level Domain:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {country.tld.map((tld) => tld)}
+                    </span>
                   </p>
-                  <p>
-                    <span>Currencies:</span>
-                    {(Object.values(country?.currencies)[0] as any).name}
+                  <p className="description">
+                    <span className="description">Currencies:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {(Object.values(country?.currencies)[0] as any).name}
+                    </span>
                   </p>
-                  <p>
-                    <span>Languages:</span>
-                    {(Object.values(country.languages) as string[]).map(
-                      (language: string) => language
-                    )}
+                  <p className="description">
+                    <span className="description">Languages:</span>
+                    <span
+                      style={{
+                        color:
+                          theme === themes.dark ? theme.font : theme.element,
+                      }}
+                    >
+                      {(Object.values(country.languages) as string[]).map(
+                        (language: string) => language
+                      )}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -91,19 +162,37 @@ function CountryDetail() {
             {country.borders && (
               <div className="country-detail-text-border-countries">
                 <p>
-                  <span>
-                    Border Countries:{" "}
-                    {country.borders.map((border) => (
-                      <button
-                        key={border}
-                        className="country-detail-button country-button"
-                        onClick={() =>
-                          handleClickToCountry(countries.getName(border, "en"))
-                        }
-                      >
-                        {countries.getName(border, "en")}
-                      </button>
-                    ))}
+                  <span className="description">
+                    Border Countries:
+                    <div className="button-group">
+                      {country.borders.map((border) => (
+                        <button
+                          key={border}
+                          className="country-detail-button country-button"
+                          onClick={() =>
+                            handleClickToCountry(
+                              countries.getName(border, "en")
+                            )
+                          }
+                          style={{
+                            background:
+                              theme === themes.dark
+                                ? theme.element
+                                : theme.background,
+                            color:
+                              theme === themes.dark
+                                ? theme.font
+                                : theme.element,
+                            boxShadow:
+                              theme === themes.dark
+                                ? ""
+                                : "rgb(0 0 0 / 22%) 0px 0px 3px",
+                          }}
+                        >
+                          {countries.getName(border, "en")}
+                        </button>
+                      ))}
+                    </div>
                   </span>
                 </p>
               </div>

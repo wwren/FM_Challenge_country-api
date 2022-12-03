@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext, themes } from "../context/theme-context";
 import "./CountryCard.css";
 
 export interface ICountry {
@@ -18,28 +19,59 @@ export interface ICountry {
 
 function CountryCard({ country }: { country: ICountry }) {
   const { population, region, capital, name, flags } = country;
+  const { theme } = useContext(ThemeContext);
 
   let navigate = useNavigate();
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     navigate(`/country/${name.common}`);
   };
-
+  console.log(theme);
   return (
-    <div className="country-card-container" onClick={handleClick}>
+    <div
+      className="country-card-container"
+      onClick={handleClick}
+      style={{
+        backgroundColor:
+          theme === themes.dark ? theme.element : theme.background,
+
+        boxShadow: theme === themes.dark ? "" : "rgb(0 0 0 / 35%) 0px 5px 15px",
+      }}
+    >
       <img src={flags.png} />
-      <div className="country-card-text">
+      <div className="country-card-text" style={{ color: theme.font }}>
         <h3>{name.common}</h3>
         <p>
-          <span>Population: </span>
-          {population}
+          <span className="title">Population: </span>
+
+          <span
+            style={{
+              color: theme === themes.dark ? theme.font : theme.element,
+            }}
+          >
+            {" "}
+            {population}
+          </span>
         </p>
         <p>
-          <span>Region: </span>
-          {region}
+          <span className="title">Region: </span>
+          <span
+            style={{
+              color: theme === themes.dark ? theme.font : theme.element,
+            }}
+          >
+            {region}
+          </span>
         </p>
-        <p>
-          <span>Capital: </span>
-          {capital}
+        <p className="title">
+          <span className="title">Capital: </span>
+          <span
+            style={{
+              color: theme === themes.dark ? theme.font : theme.element,
+            }}
+          >
+            {" "}
+            {capital}
+          </span>
         </p>
       </div>
     </div>

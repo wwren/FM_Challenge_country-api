@@ -1,6 +1,7 @@
 .country-card-container {
   background-color: var(--dark-blue-dark-mode-elements);
   width: 320px;
+  border-radius: 5px;
 }
 
 .country-card-container:hover {
@@ -13,18 +14,17 @@
 }
 .country-card-text {
   margin-left: 20px;
+  color: var(--white);
 }
 
-.country-card-container .country-card-text p span {
+.country-card-container .country-card-text p span.title {
   font-weight: 600;
 }
 
 .country-card-text h3 {
   margin-bottom: 30px;
-  color: var(--white);
 }
 .country-card-container .country-card-text p {
-  color: var(--white);
   margin-block-end: 10px;
   margin-block-start: 10px;
 }

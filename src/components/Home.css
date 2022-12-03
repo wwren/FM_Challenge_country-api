@@ -1,0 +1,20 @@
+.content {
+  padding: 20px 20px 0;
+  background-color: var(--very-dark-blue-dark-mode-background);
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+@media (min-width: 414px) {
+  .filter-container {
+    flex-direction: row;
+  }
+
+  .content {
+    padding: 20px 50px 0;
+  }
+}

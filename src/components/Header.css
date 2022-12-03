@@ -7,3 +7,27 @@ header {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+header h2 {
+  font-size: 20px;
+}
+
+.dark-mode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dark-mode:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 414px) {
+  header {
+    padding-left: 50px;
+  }
+
+  header h2 {
+    font-size: 30px;
+  }
+}

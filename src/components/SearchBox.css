@@ -1,9 +1,12 @@
 .search-box-container {
-  width: 500px;
   background-color: var(--dark-blue-dark-mode-elements);
   display: flex;
   align-items: center;
   border-radius: 10px;
+}
+
+.search-box-container svg {
+  padding-left: 20px;
 }
 
 .fa-solid.fa-magnifying-glass {
@@ -19,4 +22,11 @@
   outline: none;
   background-color: var(--dark-blue-dark-mode-elements);
   color: var(--white);
+  border-radius: 0 10px 10px 0;
+}
+
+@media (min-width: 414px) {
+  .search-box-container {
+    width: 500px;
+  }
 }

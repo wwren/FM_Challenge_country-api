@@ -24,6 +24,7 @@
   height: 40px;
   border-radius: 5px;
   align-items: center;
+  justify-content: space-around;
 }
 
 .selected span {

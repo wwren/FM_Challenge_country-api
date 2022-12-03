@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ICountry } from "./CountryCard";
 import CountryList from "./CountryList";
 import RegionDropdown from "./RegionDropdown";
 import SearchBox from "./SearchBox";
+import { ThemeContext, themes } from "../context/theme-context";
+import "./Home.css";
 
 function Home() {
   const [countries, setCountries] = useState<ICountry[]>([]);
   const [selection, setSelection] = useState<string>();
   const [name, setName] = useState<string>();
-
+  const { theme } = useContext(ThemeContext);
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     const selected = (e.target as Element).innerHTML;
     setSelection(selected);
@@ -62,7 +64,7 @@ function Home() {
   }, [selection, name]);
 
   return (
-    <div className="content">
+    <div className="content" style={{ backgroundColor: theme.background }}>
       <div className="filter-container">
         <SearchBox handleInput={handleInput}></SearchBox>
         <RegionDropdown selection={selection} handleClick={handleClick} />
