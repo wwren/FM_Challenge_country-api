@@ -44,8 +44,6 @@ function Home() {
           );
           if (responseName.status === 200) {
             const countriesName = await responseName.json();
-
-            console.log(countriesName);
             const countries = countriesName.filter(
               (country: ICountry) => country.continents[0] === selection
             );
@@ -64,14 +62,14 @@ function Home() {
   }, [selection, name]);
 
   return (
-    <div className="content" style={{ backgroundColor: theme.background }}>
+    <main className="content" style={{ backgroundColor: theme.background }}>
       <div className="filter-container">
         <SearchBox handleInput={handleInput}></SearchBox>
         <RegionDropdown selection={selection} handleClick={handleClick} />
       </div>
 
       <CountryList countries={countries} />
-    </div>
+    </main>
   );
 }
 

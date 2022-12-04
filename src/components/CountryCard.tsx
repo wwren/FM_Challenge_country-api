@@ -25,7 +25,7 @@ function CountryCard({ country }: { country: ICountry }) {
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     navigate(`/country/${name.common}`);
   };
-  console.log(theme);
+
   return (
     <div
       className="country-card-container"
@@ -37,7 +37,7 @@ function CountryCard({ country }: { country: ICountry }) {
         boxShadow: theme === themes.dark ? "" : "rgb(0 0 0 / 35%) 0px 5px 15px",
       }}
     >
-      <img src={flags.png} />
+      <img src={flags.png} alt={`${country.name.common}-flag`} />
       <div className="country-card-text" style={{ color: theme.font }}>
         <h3>{name.common}</h3>
         <p>

@@ -33,11 +33,8 @@ function CountryDetail() {
     navigate("/");
   };
 
-  console.log(country);
-  console.log(countries.getName("FRA", "en"));
-
   return (
-    <div
+    <main
       className="country-detail-container"
       style={{
         color: theme.font,
@@ -58,7 +55,7 @@ function CountryDetail() {
       </button>
       {country && (
         <div className="country-detail">
-          <img src={country.flags.png}></img>
+          <img src={country.flags.png} alt={`${country.name.common}-flag`} />
           <div className="country-detail-text">
             <div className="country-detail-text-description">
               <h2>{country.name.common}</h2>
@@ -200,7 +197,7 @@ function CountryDetail() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 
