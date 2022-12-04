@@ -1,46 +1,120 @@
-# Getting Started with Create React App
+# Country API in React & TypeScript :rainbow_flag:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>
+<img src="./country-home-page.png" width="100%">
+</p>
+<p>
+<img src="./country-detail-page.png" width="100%">
+</p>
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+- [Description](#description)
+- [Technologies](#technologies)
+- [What I learned](#what-i-learned)
+- [License](#license)
+- [Author Info](#get-in-touch)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). All code are original.
 
-### `npm test`
+The app can be accessed at the link below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> https://ran-country-api.netlify.app/
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend: React.js, TypeScript, HTML & CSS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## What I learned
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- useContext
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```ts
+/* First create a ThemeContext */
+export const ThemeContext = React.createContext({
+  theme: themes.dark,
+  setThemeToggle: (theme: any) => {},
+});
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+/* Second create a ThemeProvider */
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setThemeToggle] = useState(themes.dark);
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  const value = { theme, setThemeToggle };
 
-## Learn More
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+};
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+/* Thrid wrap the ThemeProvider around components need it */
+<ThemeProvider>
+  <Header />
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/country/:name" element={<CountryDetail />} />
+  </Routes>
+</ThemeProvider>;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+/* Last useContext */
+function Header() {
+  const { theme, setThemeToggle } = useContext(ThemeContext);
+
+  const toggleTheme = () =>
+    setThemeToggle((prev: any) =>
+      prev === themes.light ? themes.dark : themes.light
+    );
+  return (
+    <header
+      style={{
+        backgroundColor:
+          theme === themes.dark ? theme.element : theme.background,
+        color: theme.font,
+        boxShadow: theme === themes.dark ? "" : "rgb(0 0 0 / 22%) 0px 0px 3px",
+        position: theme === themes.dark ? "static" : "relative",
+        zIndex: 10,
+      }}
+    >
+      <h2>Where is the world?</h2>
+      <div className="dark-mode" onClick={toggleTheme}>
+        {theme === themes.dark ? (
+          <Icon icon="ph:moon-light" color="white" />
+        ) : (
+          <Icon icon="ph:moon-light" />
+        )}
+
+        <p>Dark Mode</p>
+      </div>
+    </header>
+  );
+}
+```
+
+## License
+
+MIT License
+
+---
+
+## Get in touch
+
+<div>
+  <a href="https://www.instagram.com/ranwren/">
+    <div>@ranwren</div>
+    <img src="https://raw.githubusercontent.com/MikeCodesDotNET/MikeCodesDotNET/a8abbf37441f3253f74ea255a47f289208d7568c/Resources/instagram.svg" alt="Instagram" style="vertical-align:top; margin:4px">
+  </a>
+<a href="https://www.linkedin.com/in/ding-ran/">
+  <div>@Ran Ding</div>
+    <img src="https://raw.githubusercontent.com/MikeCodesDotNET/MikeCodesDotNET/a8abbf37441f3253f74ea255a47f289208d7568c/Resources/linkedIn.svg" alt="LinkedIn" style="vertical-align:top; margin:4px">
+  </a>
+</div>
+
+[Back To The Top](#)
