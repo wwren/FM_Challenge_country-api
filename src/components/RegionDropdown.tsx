@@ -38,7 +38,14 @@ function RegionDropdown({
       </div>
       {openToggle && (
         <div className="drop-content">
-          <ul>
+          <ul
+            style={{
+              backgroundColor:
+                theme === themes.dark ? theme.element : theme.background,
+              boxShadow:
+                theme === themes.dark ? "" : "rgb(0 0 0 / 22%) 0px 0px 3px",
+            }}
+          >
             <li onClick={handleClick}>Africa</li>
             <li onClick={handleClick}>America</li>
             <li onClick={handleClick}>Asia</li>
