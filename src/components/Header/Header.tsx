@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
-import { ThemeContext, themes } from "../context/theme-context";
+import { themes, useTheme } from "../../context/theme-context";
 import "./Header.css";
 
-function Header() {
-  const { theme, setThemeToggle } = useContext(ThemeContext);
+export function Header() {
+  const { theme, setThemeToggle } = useTheme();
 
   const toggleTheme = () =>
     setThemeToggle((prev: any) =>
@@ -34,5 +34,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

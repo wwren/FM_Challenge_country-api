@@ -1,25 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ThemeContext, themes } from "../context/theme-context";
+import { themes, useTheme } from "../../context/theme-context";
+import { ICountry } from "../../model/ICountry";
 import "./CountryCard.css";
 
-export interface ICountry {
-  name: { common: string; offocial: string; nativeName: string };
-  population: number;
-  region: string;
-  subregion: string;
-  currencies: { any: { name: string; symbol: string } };
-  tld: string[];
-  languages: { any: string };
-  borders: string[];
-  capital: string;
-  flags: { png: string; svg: string };
-  continents: string[];
-}
-
-function CountryCard({ country }: { country: ICountry }) {
+export function CountryCard({ country }: { country: ICountry }) {
   const { population, region, capital, name, flags } = country;
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   let navigate = useNavigate();
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -77,5 +64,3 @@ function CountryCard({ country }: { country: ICountry }) {
     </div>
   );
 }
-
-export default CountryCard;

@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ICountry } from "./CountryCard";
+import { ICountry } from "../../model/ICountry";
 import { useNavigate } from "react-router-dom";
-import { ThemeContext, themes } from "../context/theme-context";
+import { themes, useTheme } from "../../context/theme-context";
 import "./CountryDetail.css";
 var countries = require("i18n-iso-countries");
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 
-function CountryDetail() {
+export function CountryDetail() {
   const { name } = useParams();
   const [country, setCountry] = useState<ICountry>();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   useEffect(() => {
     async function fetchData() {
@@ -200,5 +200,3 @@ function CountryDetail() {
     </main>
   );
 }
-
-export default CountryDetail;

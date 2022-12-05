@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import { ThemeContext, themes } from "../context/theme-context";
+import { themes, useTheme } from "../../context/theme-context";
 import "./RegionDropdown.css";
-function RegionDropdown({
+
+export function RegionDropdown({
   selection,
   handleClick,
 }: {
@@ -10,7 +11,7 @@ function RegionDropdown({
   handleClick: (e: React.MouseEvent<HTMLElement>) => void;
 }) {
   const [openToggle, setOpenToggle] = useState(false);
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   return (
     <div
@@ -57,5 +58,3 @@ function RegionDropdown({
     </div>
   );
 }
-
-export default RegionDropdown;

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Icon } from "@iconify/react";
-import { ThemeContext, themes } from "../context/theme-context";
+import { ThemeContext, themes } from "../../context/theme-context";
 import "./SearchBox.css";
 
-function SearchBox({
+export function SearchBox({
   handleInput,
 }: {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -39,5 +39,3 @@ function SearchBox({
     </div>
   );
 }
-
-export default SearchBox;
